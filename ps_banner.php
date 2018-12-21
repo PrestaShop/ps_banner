@@ -24,7 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-if (!defined('_PS_VERSION_')) {
+if ( ! defined('_PS_VERSION_')) {
     exit;
 }
 
@@ -107,14 +107,14 @@ class Ps_Banner extends Module implements WidgetInterface
             foreach ($languages as $lang) {
                 if (isset($_FILES['BANNER_IMG_'.$lang['id_lang']], $_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'])
                      
-                    && !empty($_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'])) {
+                    && ! empty($_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'])) {
                     if ($error = ImageManager::validateUpload($_FILES['BANNER_IMG_'.$lang['id_lang']], 4000000)) {
                         return $error;
                     } else {
                         $ext = substr($_FILES['BANNER_IMG_'.$lang['id_lang']]['name'], strrpos($_FILES['BANNER_IMG_'.$lang['id_lang']]['name'], '.') + 1);
                         $file_name = md5($_FILES['BANNER_IMG_'.$lang['id_lang']]['name']).'.'.$ext;
 
-                        if (!move_uploaded_file($_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'], dirname(__FILE__).DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$file_name)) {
+                        if ( ! move_uploaded_file($_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'], dirname(__FILE__).DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$file_name)) {
                             return $this->displayError($this->trans('An error occurred while attempting to upload the file.', [], 'Admin.Notifications.Error'));
                         } else {
                             if (Configuration::hasContext('BANNER_IMG', $lang['id_lang'], Shop::getContext())
@@ -228,7 +228,7 @@ class Ps_Banner extends Module implements WidgetInterface
 
     public function renderWidget($hookName, array $params)
     {
-        if (!$this->isCached($this->templateFile, $this->getCacheId('ps_banner'))) {
+        if ( ! $this->isCached($this->templateFile, $this->getCacheId('ps_banner'))) {
             $this->smarty->assign($this->getWidgetVariables($hookName, $params));
         }
 
@@ -244,7 +244,7 @@ class Ps_Banner extends Module implements WidgetInterface
         }
 
         $banner_link = Configuration::get('BANNER_LINK', $this->context->language->id);
-        if (!$banner_link) {
+        if ( ! $banner_link) {
             $banner_link = $this->context->link->getPageLink('index');
         }
 
