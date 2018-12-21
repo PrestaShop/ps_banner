@@ -159,7 +159,7 @@ class Ps_Banner extends Module implements WidgetInterface
             'form' => [
                 'legend' => [
                     'title' => $this->trans('Settings', [], 'Admin.Global'),
-                    'icon' => 'icon-cogs'
+                    'icon' => 'icon-cogs',
                 ],
                 'input' => [
                     [
@@ -174,19 +174,19 @@ class Ps_Banner extends Module implements WidgetInterface
                         'lang' => true,
                         'label' => $this->trans('Banner Link', [], 'Modules.Banner.Admin'),
                         'name' => 'BANNER_LINK',
-                        'desc' => $this->trans('Enter the link associated to your banner. When clicking on the banner, the link opens in the same window. If no link is entered, it redirects to the homepage.', [], 'Modules.Banner.Admin')
+                        'desc' => $this->trans('Enter the link associated to your banner. When clicking on the banner, the link opens in the same window. If no link is entered, it redirects to the homepage.', [], 'Modules.Banner.Admin'),
                     ],
                     [
                         'type' => 'text',
                         'lang' => true,
                         'label' => $this->trans('Banner description', [], 'Modules.Banner.Admin'),
                         'name' => 'BANNER_DESC',
-                        'desc' => $this->trans('Please enter a short but meaningful description for the banner.', [], 'Modules.Banner.Admin')
-                    ]
+                        'desc' => $this->trans('Please enter a short but meaningful description for the banner.', [], 'Modules.Banner.Admin'),
+                    ],
                 ],
                 'submit' => [
-                    'title' => $this->trans('Save', [], 'Admin.Actions')
-                ]
+                    'title' => $this->trans('Save', [], 'Admin.Actions'),
+                ],
             ],
         ];
 
@@ -206,7 +206,7 @@ class Ps_Banner extends Module implements WidgetInterface
             'uri' => $this->getPathUri(),
             'fields_value' => $this->getConfigFieldsValues(),
             'languages' => $this->context->controller->getLanguages(),
-            'id_language' => $this->context->language->id
+            'id_language' => $this->context->language->id,
         ];
 
         return $helper->generateForm([$fields_form]);
@@ -250,7 +250,7 @@ class Ps_Banner extends Module implements WidgetInterface
 
         return [
             'banner_link' => $this->updateUrl($banner_link),
-            'banner_desc' => Configuration::get('BANNER_DESC', $this->context->language->id)
+            'banner_desc' => Configuration::get('BANNER_DESC', $this->context->language->id),
         ];
     }
 
