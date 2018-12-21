@@ -63,7 +63,7 @@ class Ps_Banner extends Module implements WidgetInterface
 
     public function hookActionObjectLanguageAddAfter($params)
     {
-        return $this->installFixture((int)$params['object']->id, Configuration::get('BANNER_IMG', (int)Configuration::get('PS_LANG_DEFAULT')));
+        return $this->installFixture((int) $params['object']->id, Configuration::get('BANNER_IMG', (int) Configuration::get('PS_LANG_DEFAULT')));
     }
 
     protected function installFixtures()
@@ -71,7 +71,7 @@ class Ps_Banner extends Module implements WidgetInterface
         $languages = Language::getLanguages(false);
 
         foreach ($languages as $lang) {
-            $this->installFixture((int)$lang['id_lang'], 'sale70.png');
+            $this->installFixture((int) $lang['id_lang'], 'sale70.png');
         }
 
         return true;
@@ -79,9 +79,9 @@ class Ps_Banner extends Module implements WidgetInterface
 
     protected function installFixture($id_lang, $image = null)
     {
-        $values['BANNER_IMG'][(int)$id_lang] = $image;
-        $values['BANNER_LINK'][(int)$id_lang] = '';
-        $values['BANNER_DESC'][(int)$id_lang] = '';
+        $values['BANNER_IMG'][(int) $id_lang] = $image;
+        $values['BANNER_LINK'][(int) $id_lang] = '';
+        $values['BANNER_DESC'][(int) $id_lang] = '';
 
         Configuration::updateValue('BANNER_IMG', $values['BANNER_IMG']);
         Configuration::updateValue('BANNER_LINK', $values['BANNER_LINK']);
@@ -190,7 +190,7 @@ class Ps_Banner extends Module implements WidgetInterface
             ],
         ];
 
-        $lang = new Language((int)Configuration::get('PS_LANG_DEFAULT'));
+        $lang = new Language((int) Configuration::get('PS_LANG_DEFAULT'));
 
         $helper = new HelperForm();
         $helper->show_toolbar = false;
