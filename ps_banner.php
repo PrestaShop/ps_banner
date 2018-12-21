@@ -105,16 +105,16 @@ class Ps_Banner extends Module implements WidgetInterface
             $update_images_values = false;
 
             foreach ($languages as $lang) {
-                if (isset($_FILES['BANNER_IMG_'.$lang['id_lang']], $_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'])
+                if (isset($_FILES['BANNER_IMG_' . $lang['id_lang']], $_FILES['BANNER_IMG_' . $lang['id_lang']]['tmp_name'])
                      
-                    && ! empty($_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'])) {
-                    if ($error = ImageManager::validateUpload($_FILES['BANNER_IMG_'.$lang['id_lang']], 4000000)) {
+                    && ! empty($_FILES['BANNER_IMG_' . $lang['id_lang']]['tmp_name'])) {
+                    if ($error = ImageManager::validateUpload($_FILES['BANNER_IMG_' . $lang['id_lang']], 4000000)) {
                         return $error;
                     } else {
-                        $ext = substr($_FILES['BANNER_IMG_'.$lang['id_lang']]['name'], strrpos($_FILES['BANNER_IMG_'.$lang['id_lang']]['name'], '.') + 1);
-                        $file_name = md5($_FILES['BANNER_IMG_'.$lang['id_lang']]['name']).'.'.$ext;
+                        $ext = substr($_FILES['BANNER_IMG_' . $lang['id_lang']]['name'], strrpos($_FILES['BANNER_IMG_' . $lang['id_lang']]['name'], '.') + 1);
+                        $file_name = md5($_FILES['BANNER_IMG_' . $lang['id_lang']]['name']) . '.' . $ext;
 
-                        if ( ! move_uploaded_file($_FILES['BANNER_IMG_'.$lang['id_lang']]['tmp_name'], __DIR__.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$file_name)) {
+                        if ( ! move_uploaded_file($_FILES['BANNER_IMG_' . $lang['id_lang']]['tmp_name'], __DIR__ . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $file_name)) {
                             return $this->displayError($this->trans('An error occurred while attempting to upload the file.', [], 'Admin.Notifications.Error'));
                         } else {
                             if (Configuration::hasContext('BANNER_IMG', $lang['id_lang'], Shop::getContext())
@@ -129,8 +129,8 @@ class Ps_Banner extends Module implements WidgetInterface
                     $update_images_values = true;
                 }
 
-                $values['BANNER_LINK'][$lang['id_lang']] = Tools::getValue('BANNER_LINK_'.$lang['id_lang']);
-                $values['BANNER_DESC'][$lang['id_lang']] = Tools::getValue('BANNER_DESC_'.$lang['id_lang']);
+                $values['BANNER_LINK'][$lang['id_lang']] = Tools::getValue('BANNER_LINK_' . $lang['id_lang']);
+                $values['BANNER_DESC'][$lang['id_lang']] = Tools::getValue('BANNER_DESC_' . $lang['id_lang']);
             }
 
             if ($update_images_values) {
@@ -150,7 +150,7 @@ class Ps_Banner extends Module implements WidgetInterface
 
     public function getContent()
     {
-        return $this->postProcess().$this->renderForm();
+        return $this->postProcess() . $this->renderForm();
     }
 
     public function renderForm()
@@ -200,7 +200,7 @@ class Ps_Banner extends Module implements WidgetInterface
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') ? Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') : 0;
         $helper->identifier = $this->identifier;
         $helper->submit_action = 'submitStoreConf';
-        $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false).'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
+        $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false) . '&configure=' . $this->name . '&tab_module=' . $this->tab . '&module_name=' . $this->name;
         $helper->token = Tools::getAdminTokenLite('AdminModules');
         $helper->tpl_vars = [
             'uri' => $this->getPathUri(),
@@ -218,9 +218,9 @@ class Ps_Banner extends Module implements WidgetInterface
         $fields = [];
 
         foreach ($languages as $lang) {
-            $fields['BANNER_IMG'][$lang['id_lang']] = Tools::getValue('BANNER_IMG_'.$lang['id_lang'], Configuration::get('BANNER_IMG', $lang['id_lang']));
-            $fields['BANNER_LINK'][$lang['id_lang']] = Tools::getValue('BANNER_LINK_'.$lang['id_lang'], Configuration::get('BANNER_LINK', $lang['id_lang']));
-            $fields['BANNER_DESC'][$lang['id_lang']] = Tools::getValue('BANNER_DESC_'.$lang['id_lang'], Configuration::get('BANNER_DESC', $lang['id_lang']));
+            $fields['BANNER_IMG'][$lang['id_lang']] = Tools::getValue('BANNER_IMG_' . $lang['id_lang'], Configuration::get('BANNER_IMG', $lang['id_lang']));
+            $fields['BANNER_LINK'][$lang['id_lang']] = Tools::getValue('BANNER_LINK_' . $lang['id_lang'], Configuration::get('BANNER_LINK', $lang['id_lang']));
+            $fields['BANNER_DESC'][$lang['id_lang']] = Tools::getValue('BANNER_DESC_' . $lang['id_lang'], Configuration::get('BANNER_DESC', $lang['id_lang']));
         }
 
         return $fields;
@@ -239,7 +239,7 @@ class Ps_Banner extends Module implements WidgetInterface
     {
         $imgname = Configuration::get('BANNER_IMG', $this->context->language->id);
 
-        if ($imgname && file_exists(_PS_MODULE_DIR_.$this->name.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$imgname)) {
+        if ($imgname && file_exists(_PS_MODULE_DIR_ . $this->name . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $imgname)) {
             $this->smarty->assign('banner_img', $this->context->link->protocol_content . Tools::getMediaServer($imgname) . $this->_path . 'img/' . $imgname);
         }
 
