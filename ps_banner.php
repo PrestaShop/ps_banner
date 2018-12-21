@@ -256,8 +256,8 @@ class Ps_Banner extends Module implements WidgetInterface
 
     private function updateUrl($link)
     {
-        if (substr($link, 0, 7) !== "http://" && substr($link, 0, 8) !== "https://") {
-            $link = "http://" . $link;
+        if (substr($link, 0, 7) !== 'http://' && substr($link, 0, 8) !== 'https://') {
+            $link = 'http://' . $link;
         }
 
         return $link;
