@@ -87,7 +87,6 @@ describe('Disable and enable module', async () => {
 
     const bannerExists = await homePage.isBannerVisible(page);
     await expect(bannerExists).to.be.false;
-
   });
 
   it('should go back to BO', async () => {
