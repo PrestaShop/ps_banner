@@ -5,7 +5,8 @@ on:
     types: [opened,reopened,synchronize]
 
 jobs:
-  e2e-tests:
+
+  e2e_tests:
     runs-on: ubuntu-latest
     name: E2E tests
 
@@ -18,7 +19,7 @@ jobs:
       - name: Running latest prestashop with docker
         run: docker-compose up --build
 
-      - name: Running tests
+      - name: Run tests
         run: |
           npm install && npm run e2e-tests
         env:
