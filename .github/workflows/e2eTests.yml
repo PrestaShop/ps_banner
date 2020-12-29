@@ -23,7 +23,7 @@ jobs:
       - name: Wait for prestashop to be ready
         uses: juliangruber/sleep-action@v1
         with:
-          time: 45s
+          time: 60s
 
       - name: Run tests
         run: |
