@@ -20,6 +20,11 @@ jobs:
       - name: Running latest prestashop with docker
         run: docker-compose up --build -d
 
+      - name: Wait for prestashop to be ready
+        uses: juliangruber/sleep-action@v1
+        with:
+          time: 45s
+
       - name: Run tests
         run: |
           npm install && npm run e2e-tests
