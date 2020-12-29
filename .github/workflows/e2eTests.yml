@@ -1,6 +1,7 @@
 name: E2E tests
 
 on:
+  push:
   pull_request:
     types: [opened,reopened,synchronize]
 
@@ -17,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Running latest prestashop with docker
-        run: docker-compose up --build
+        run: docker-compose up --build -d
 
       - name: Run tests
         run: |
