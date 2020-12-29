@@ -21,14 +21,14 @@ class PS_BANNER extends ModuleConfigurationPage.constructor {
 
     // Form selectors
     this.moduleForm = '#module_form';
-    this.bannerImageSelectButton = (langId) => `#BANNER_IMG_${langId}-selectbutton`;
-    this.bannerLinkInput = (langId) => `#BANNER_LINK_${langId}`;
-    this.bannerDescriptionInput = (langId) => `#BANNER_DESC_${langId}`;
+    this.bannerImageSelectButton = langId => `#BANNER_IMG_${langId}-selectbutton`;
+    this.bannerLinkInput = langId => `#BANNER_LINK_${langId}`;
+    this.bannerDescriptionInput = langId => `#BANNER_DESC_${langId}`;
     this.saveButton = '#module_form_submit_btn';
 
     // Change languages selector
     this.dropdownLangButton = `${this.moduleForm} button.dropdown-toggle`;
-    this.dropdownLangItemLink = (langId) => `#dropdown-lang-item-link-${langId}`;
+    this.dropdownLangItemLink = langId => `#dropdown-lang-item-link-${langId}`;
   }
 
   // Functions

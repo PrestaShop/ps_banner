@@ -8,7 +8,7 @@ module.exports = class FoBasePage extends CommonPage {
     // Selectors
     this.languageSelectorDiv = '#_desktop_language_selector';
     this.languageSelectorExpandIcon = `${this.languageSelectorDiv} i.expand-more`;
-    this.languageSelectorMenuItemLink = (language) => `${this.languageSelectorDiv}`
+    this.languageSelectorMenuItemLink = language => `${this.languageSelectorDiv}`
       + ` ul li a[data-iso-code='${language}']`;
   }
 
