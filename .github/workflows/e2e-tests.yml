@@ -1,0 +1,28 @@
+name: E2E tests
+
+on:
+  pull_request:
+    types: [opened,reopened,synchronize]
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    name: E2E tests
+
+    steps:
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Running latest prestashop with docker
+        run: docker-compose up --build
+
+      - name: Running tests
+        run: |
+          npm install && npm run e2e-tests
+        env:
+          URL_FO: http://localhost/
+          HEADLESS: true
+          PS_VERSION: "1.7.7"
+        working-directory: ./tests/E2E
