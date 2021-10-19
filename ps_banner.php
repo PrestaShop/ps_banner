@@ -77,10 +77,10 @@ class Ps_Banner extends Module implements WidgetInterface
         }
 
         // Data migration
-        Configuration::updateValue('BANNER_IMG',Configuration::getInt('BLOCKBANNER_IMG'));
-        Configuration::updateValue('BANNER_LINK', Configuration::getInt('BLOCKBANNER_LINK'));
-        Configuration::updateValue('BANNER_DESC', Configuration::getInt('BLOCKBANNER_DESC'));
-        
+        Configuration::updateValue('BANNER_IMG',Configuration::getConfigInMultipleLangs('BLOCKBANNER_IMG'));
+        Configuration::updateValue('BANNER_LINK', Configuration::getConfigInMultipleLangs('BLOCKBANNER_LINK'));
+        Configuration::updateValue('BANNER_DESC', Configuration::getConfigInMultipleLangs('BLOCKBANNER_DESC'));
+
         $oldModule = Module::getInstanceByName(self::PS_16_EQUIVALENT_MODULE);
         if ($oldModule) {
             $oldModule->uninstall();
