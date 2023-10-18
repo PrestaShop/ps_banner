@@ -63,8 +63,7 @@ class Ps_Banner extends Module implements WidgetInterface
             $this->registerHook('displayHome') &&
             $this->registerHook('actionObjectLanguageAddAfter') &&
             $this->installFixtures() &&
-            $this->uninstallPrestaShop16Module() &&
-            $this->disableDevice(Context::DEVICE_MOBILE);
+            $this->uninstallPrestaShop16Module();
     }
 
     /**
