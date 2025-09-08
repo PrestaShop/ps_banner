@@ -294,17 +294,8 @@ class Ps_Banner extends Module implements WidgetInterface
         }
 
         return [
-            'banner_link' => $this->updateUrl($banner_link),
+            'banner_link' => $banner_link,
             'banner_desc' => Configuration::get('BANNER_DESC', $this->context->language->id),
         ];
-    }
-
-    private function updateUrl($link)
-    {
-        if (substr($link, 0, 7) !== 'http://' && substr($link, 0, 8) !== 'https://') {
-            $link = 'http://' . $link;
-        }
-
-        return $link;
     }
 }
