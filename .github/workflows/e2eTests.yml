@@ -13,12 +13,12 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Running latest prestashop with docker
-        run: docker-compose up --build -d
+        run: docker compose up --build -d
         working-directory: .github/workflows/e2eTests
 
       - name: Wait for prestashop to be ready
