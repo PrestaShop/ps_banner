@@ -3,5 +3,5 @@ includes:
 
 parameters:
   ignoreErrors:
-    - '#Call to method assign\(\) on an unknown class Smarty_Data.#'
     - '#Call to an undefined static method Configuration::getConfigInMultipleLangs\(\).#'
+    - '#Call to an undefined static method Configuration::getInt\(\).#'
