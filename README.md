@@ -11,7 +11,7 @@ Add a banner to the homepage of your store to highlight your sales and new produ
 
 ## Compatibility
 
-PrestaShop: `8.1.0` or later
+PrestaShop: `8.2.0` or later
 
 ## How to test
 

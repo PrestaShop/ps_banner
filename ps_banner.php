@@ -52,7 +52,7 @@ class Ps_Banner extends Module implements WidgetInterface
         $this->displayName = $this->trans('Banner', [], 'Modules.Banner.Admin');
         $this->description = $this->trans('Add a banner to the homepage of your store to highlight your sales and new products in a visual and friendly way.', [], 'Modules.Banner.Admin');
 
-        $this->ps_versions_compliancy = ['min' => '8.1.0', 'max' => _PS_VERSION_];
+        $this->ps_versions_compliancy = ['min' => '8.2.0', 'max' => _PS_VERSION_];
 
         $this->templateFile = 'module:ps_banner/ps_banner.tpl';
     }
@@ -76,15 +76,9 @@ class Ps_Banner extends Module implements WidgetInterface
             return true;
         }
 
-        if (version_compare(_PS_VERSION_, '8.0.0', '>=')) {
-            $blockBannerImgValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_IMG');
-            $blockBannerLinkValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_LINK');
-            $blockBannerDescValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_DESC');
-        } else {
-            $blockBannerImgValue = Configuration::getInt('BLOCKBANNER_IMG');
-            $blockBannerLinkValue = Configuration::getInt('BLOCKBANNER_LINK');
-            $blockBannerDescValue = Configuration::getInt('BLOCKBANNER_DESC');
-        }
+        $blockBannerImgValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_IMG');
+        $blockBannerLinkValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_LINK');
+        $blockBannerDescValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_DESC');
 
         // Data migration
         Configuration::updateValue('BANNER_IMG', $blockBannerImgValue);
