@@ -42,7 +42,7 @@ class Ps_Banner extends Module implements WidgetInterface
     {
         $this->name = 'ps_banner';
         $this->tab = 'front_office_features';
-        $this->version = '2.1.2';
+        $this->version = '3.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
 
