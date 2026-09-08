@@ -42,7 +42,7 @@ class Ps_Banner extends Module implements WidgetInterface
     {
         $this->name = 'ps_banner';
         $this->tab = 'front_office_features';
-        $this->version = '2.1.2';
+        $this->version = '3.0.0';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
 
@@ -52,7 +52,7 @@ class Ps_Banner extends Module implements WidgetInterface
         $this->displayName = $this->trans('Banner', [], 'Modules.Banner.Admin');
         $this->description = $this->trans('Add a banner to the homepage of your store to highlight your sales and new products in a visual and friendly way.', [], 'Modules.Banner.Admin');
 
-        $this->ps_versions_compliancy = ['min' => '1.7.1.0', 'max' => _PS_VERSION_];
+        $this->ps_versions_compliancy = ['min' => '8.2.0', 'max' => _PS_VERSION_];
 
         $this->templateFile = 'module:ps_banner/ps_banner.tpl';
     }
@@ -76,10 +76,14 @@ class Ps_Banner extends Module implements WidgetInterface
             return true;
         }
 
+        $blockBannerImgValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_IMG');
+        $blockBannerLinkValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_LINK');
+        $blockBannerDescValue = Configuration::getConfigInMultipleLangs('BLOCKBANNER_DESC');
+
         // Data migration
-        Configuration::updateValue('BANNER_IMG', Configuration::getInt('BLOCKBANNER_IMG'));
-        Configuration::updateValue('BANNER_LINK', Configuration::getInt('BLOCKBANNER_LINK'));
-        Configuration::updateValue('BANNER_DESC', Configuration::getInt('BLOCKBANNER_DESC'));
+        Configuration::updateValue('BANNER_IMG', $blockBannerImgValue);
+        Configuration::updateValue('BANNER_LINK', $blockBannerLinkValue);
+        Configuration::updateValue('BANNER_DESC', $blockBannerDescValue);
 
         $oldModule = Module::getInstanceByName(self::PS_16_EQUIVALENT_MODULE);
         if ($oldModule) {

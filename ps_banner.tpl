@@ -31,6 +31,7 @@
       title="{$banner_desc}"
       width="{$banner_width}"
       height="{$banner_height}"
+    >
   {else}
     <span>{$banner_desc}</span>
   {/if}

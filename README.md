@@ -1,10 +1,23 @@
 # Banner
 
+[![PHP tests](https://github.com/PrestaShop/ps_banner/actions/workflows/php.yml/badge.svg)](https://github.com/PrestaShop/ps_banner/actions/workflows/php.yml)
 [![Latest Stable Version](https://poser.pugx.org/PrestaShop/ps_banner/v)](//packagist.org/packages/PrestaShop/ps_banner)
+[![Total Downloads](https://poser.pugx.org/PrestaShop/ps_banner/downloads)](//packagist.org/packages/PrestaShop/ps_banner)
+[![GitHub license](https://img.shields.io/github/license/PrestaShop/ps_banner)](https://github.com/PrestaShop/ps_banner/LICENSE.md)
 
 ## About
 
 Add a banner to the homepage of your store to highlight your sales and new products in a visual and friendly way.
+
+## Compatibility
+
+PrestaShop: `8.2.0` or later
+
+## How to test
+
+Link to specs : https://docs.prestashop-project.org/functional-documentation/functional-documentation/ux-ui/back-office/improve/modules/banner-ps_banner
+
+Add a banner image, link and description (alt text) and make sure it is well displayed in the Homepage
 
 ## Reporting issues
 
@@ -28,6 +41,6 @@ Just make sure to follow our [contribution guidelines][contribution-guidelines].
 This module is released under the [Academic Free License 3.0][AFL-3.0] 
 
 [report-issue]: https://github.com/PrestaShop/PrestaShop/issues/new/choose
-[prestashop]: https://www.prestashop.com/
-[contribution-guidelines]: https://devdocs.prestashop.com/1.7/contribute/contribution-guidelines/project-modules/
+[prestashop]: https://www.prestashop-project.org/
+[contribution-guidelines]: https://devdocs.prestashop-project.org/8/contribute/contribution-guidelines/project-modules/
 [AFL-3.0]: https://opensource.org/licenses/AFL-3.0
